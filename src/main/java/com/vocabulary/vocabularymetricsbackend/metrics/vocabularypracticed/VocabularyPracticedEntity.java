@@ -5,12 +5,14 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Date;
+import javax.persistence.Table;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 @Entity
+@Table(name = "vocabulary_practiced")
 public class VocabularyPracticedEntity {
 
     @Id
@@ -18,5 +20,5 @@ public class VocabularyPracticedEntity {
     private UUID id;
 
     private UUID vocabularyId;
-    private Date actionDate = new Date();
+    private LocalDate date = LocalDate.now();
 }
