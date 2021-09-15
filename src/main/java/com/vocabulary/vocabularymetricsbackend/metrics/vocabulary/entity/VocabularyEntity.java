@@ -1,4 +1,4 @@
-package com.vocabulary.vocabularymetricsbackend.metrics.vocabularypracticed;
+package com.vocabulary.vocabularymetricsbackend.metrics.vocabulary.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,8 +12,8 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "vocabulary_practiced")
-public class VocabularyPracticedEntity {
+@Table(name = "vocabulary_metrics")
+public class VocabularyEntity {
 
     @Id
     @GeneratedValue
