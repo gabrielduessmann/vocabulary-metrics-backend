@@ -19,4 +19,10 @@ public interface VocabularyRepository extends CrudRepository<VocabularyEntity, U
 
     @Query("select count(distinct v.vocabularyId) from VocabularyEntity v where v.date = ?1")
     Long quantityOfVocabulariesPracticedByDay(LocalDate date);
+
+    @Query("select count(v) from VocabularyEntity v where v.date >= ?1 and v.date <= ?2")
+    Long quantityOfCommentsAddedByWeek(LocalDate minDate, LocalDate maxDate);
+
+    @Query("select count(distinct v.vocabularyId) from VocabularyEntity v where v.date >= ?1 and v.date <= ?2")
+    Long quantityOfVocabulariesPracticedByWeek(LocalDate minDate, LocalDate maxDate);
 }

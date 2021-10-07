@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -29,5 +31,19 @@ public class VocabularyController {
     @GetMapping("/metrics/comments")
     public List<CommentDto> getCommentMetrics() {
         return commentService.getQuantityOfCommentsAdded();
+    }
+
+    @GetMapping("metrics/vocabularies/week")
+    public List<VocabularyDto> getVocabularyMetricsByWeek() {
+        final LocalDate currentDate = LocalDate.now();
+        final Long weeksFiltered = new Long(12);
+        return vocabularyService.getQuantityOfVocabulariesPracticedByWeek(currentDate.minusWeeks(weeksFiltered), currentDate, new ArrayList<>());
+    }
+
+    @GetMapping("metrics/comments/week")
+    public List<CommentDto> getCommentMetricsByWeek() {
+        final LocalDate currentDate = LocalDate.now();
+        final Long weeksFiltered = new Long(12);
+        return commentService.getQuantityOfCommentsAddedByWeek(currentDate.minusWeeks(weeksFiltered), currentDate, new ArrayList<>());
     }
 }
